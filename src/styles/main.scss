@@ -28,6 +28,7 @@ $mobile-width: 425px;
 * {
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Lato', sans-serif;
   color: $black;
@@ -70,7 +71,6 @@ body {
   }
   @media (max-width: $tablet-width) {
     min-width: 140px;
-    padding: 8px 10px;
   }
 }
 .highlight {
@@ -97,6 +97,8 @@ body {
 
 .mobile-menu-icon {
   display: none;
+  justify-content: center;
+  align-items: center;
   height: 40px;
   cursor: pointer;
   &__line {
@@ -136,10 +138,8 @@ body {
       transform: rotate(-45deg);
     }
   }
-  @media (max-width: #{$desktop-width}) {
+  @media (max-width: $desktop-width) {
     display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 
@@ -148,9 +148,15 @@ body {
     display: flex;
     list-style: none;
     padding-left: 0;
+    @media (max-width: $desktop-width) {
+      flex-direction: column;
+    }
   }
   &__item {
     margin-left: 60px;
+    @media (max-width: $desktop-width) {
+      margin: 0;
+    }
   }
   &__link {
     color: $white;
@@ -160,15 +166,30 @@ body {
     text-decoration: none;
     text-transform: uppercase;
     transition: 0.2s;
-    &_active {
-      color: $light-blue;
-      cursor: default;
+    @media (max-width: $desktop-width) {
+      display: block;
+      margin: 0;
+      padding: 10px 20px;
+      -webkit-transition: transform 0.5s linear;
+      transition: transform 0.5s linear;
     }
     &:hover {
       color: $light-blue;
+      @media (max-width: $desktop-width) {
+        transform: translateX(10px);
+      }
+    }
+    &_active {
+      color: $light-blue;
+      cursor: default;
+      @media (max-width: $desktop-width) {
+        &:hover {
+          transform: none;
+        }
+      }
     }
   }
-  @media (max-width: #{$desktop-width}) {
+  @media (max-width: $desktop-width) {
     background-color: $bg-header;
     width: 320px;
     height: 100%;
@@ -177,25 +198,6 @@ body {
     right: -320px;
     -webkit-transition: all 0.5s linear;
     transition: all 0.5s linear;
-    &__list {
-      flex-direction: column;
-    }
-    &__item {
-      margin: 0;
-    }
-    &__link {
-      display: block;
-      margin: 0;
-      padding: 10px 20px;
-      -webkit-transition: transform 0.5s linear;
-      transition: transform 0.5s linear;
-      &:hover {
-        transform: translateX(10px);
-      }
-      &_active:hover {
-        transform: none;
-      }
-    }
     &_open {
       right: 0;
     }
@@ -220,10 +222,17 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  padding: 0 20px;
   &__wrapper {
     padding: 170px 0 203px;
     display: flex;
     flex-direction: column;
+    @media (max-width: $desktop-width) {
+      padding: 50px 30px;
+    }
+    @media (max-width: $mobile-width) {
+      padding: 50px 10px 20px;
+    }
   }
   &__title {
     max-width: 780px;
@@ -234,11 +243,28 @@ body {
     line-height: 58px;
     letter-spacing: 0.3px;
     text-transform: uppercase;
+    @media (max-width: $desktop-width) {
+      font-size: 30px;
+      line-height: 30px;
+      max-width: 50%;
+      margin-bottom: 10px;
+    }
+    @media (max-width: $mobile-width) {
+      font-size: 24px;
+      max-width: 100%;
+    }
   }
   &__content {
     font-size: 20px;
     line-height: 24px;
     margin: 10px 0 70px;
+    @media (max-width: $desktop-width) {
+      margin-bottom: 20px;
+    }
+    @media (max-width: $mobile-width) {
+      font-size: 14px;
+      line-height: 15px;
+    }
   }
   &__text {
     margin: 0;
@@ -256,7 +282,6 @@ body {
     position: relative;
     &:before {
       content: '-';
-      content: '-';
       position: absolute;
       left: -16px;
       top: -3px;
@@ -264,37 +289,10 @@ body {
   }
   &__button {
     margin-right: 30px;
-  }
-  @media (max-width: $desktop-width) {
-    &__wrapper {
-      padding: 50px 30px;
-    }
-    &__title {
-      font-size: 30px;
-      line-height: 30px;
-      max-width: 50%;
-      margin-bottom: 10px;
-    }
-    &__content {
-      margin-bottom: 20px;
-    }
-    &__button {
+    @media (max-width: $desktop-width) {
       margin-right: 10px;
     }
-  }
-  @media (max-width: $mobile-width) {
-    &__wrapper {
-      padding: 50px 10px 20px;
-    }
-    &__title {
-      font-size: 24px;
-      max-width: 100%;
-    }
-    &__content {
-      font-size: 14px;
-      line-height: 15px;
-    }
-    &__button {
+    @media (max-width: $mobile-width) {
       margin-right: 5px;
     }
   }
@@ -313,6 +311,12 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 120px 0 150px;
+    @media (max-width: $desktop-width) {
+      padding: 50px 0;
+    }
+    @media (max-width: $mobile-width) {
+      padding: 50px 0 20px;
+    }
   }
   &__title {
     color: $white;
@@ -322,6 +326,10 @@ body {
     text-transform: uppercase;
     margin: 0 0 10px;
     text-align: center;
+    @media (max-width: $desktop-width) {
+      font-size: 30px;
+      line-height: 30px;
+    }
   }
   &__subtitle {
     color: $grey;
@@ -330,30 +338,14 @@ body {
     line-height: 22px;
     text-align: center;
     margin-bottom: 65px;
+    @media (max-width: $desktop-width) {
+      margin-bottom: 20px;
+    }
   }
   &__work-scheme {
     margin-bottom: 70px;
-  }
-  @media (max-width) {
-  }
-  @media (max-width: $desktop-width) {
-    &__wrapper {
-      padding: 50px 30px;
-    }
-    &__title {
-      font-size: 30px;
-      line-height: 30px;
-    }
-    &__subtitle {
+    @media (max-width: $desktop-width) {
       margin-bottom: 20px;
-    }
-    &__work-scheme {
-      margin-bottom: 20px;
-    }
-  }
-  @media (max-width: $mobile-width) {
-    &__wrapper {
-      padding: 50px 10px 20px;
     }
   }
 }
@@ -382,9 +374,21 @@ body {
       line-height: 1px;
       z-index: 1;
       letter-spacing: 17px;
+      @media (max-width: $desktop-width) {
+        right: -75px;
+        top: 15px;
+      }
+      @media (max-width: $tablet-width) {
+        content: none;
+      }
     }
     &:last-child::after {
       content: none;
+    }
+    @media (max-width: $tablet-width) {
+      flex-direction: row;
+      max-width: none;
+      width: 280px;
     }
   }
   &__icon {
@@ -397,6 +401,15 @@ body {
     background-repeat: no-repeat;
     border: 5px solid $blue;
     z-index: 2;
+    @media (max-width: $desktop-width) {
+      width: 60px;
+      min-width: 60px;
+      height: 60px;
+      background-size: 25px;
+    }
+    @media (max-width: $tablet-width) {
+      margin-right: 10px;
+    }
   }
   &__item_step_1 &__icon {
     background-image: url(../images/01.svg);
@@ -419,40 +432,17 @@ body {
     letter-spacing: -0.05px;
     text-align: center;
     color: $white;
-  }
-  @media (max-width: $desktop-width) {
-    &__icon {
-      width: 60px;
-      min-width: 60px;
-      height: 60px;
-      background-size: 25px;
-    }
-    &__item::after {
-      right: -75px;
-      top: 15px;
-    }
-    &__text {
+    @media (max-width: $desktop-width) {
       font-size: 12px;
       line-height: 15px;
+    }
+    @media (max-width: $tablet-width) {
+      text-align: left;
     }
   }
   @media (max-width: $tablet-width) {
     flex-direction: column;
     align-items: center;
-    &__item {
-      flex-direction: row;
-      max-width: none;
-      width: 280px;
-      &:after {
-        content: none;
-      }
-    }
-    &__icon {
-      margin-right: 10px;
-    }
-    &__text {
-      text-align: left;
-    }
   }
 }
 
@@ -461,22 +451,26 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  @media (max-width: $desktop-width) {
+    max-width: 400px;
+  }
   &__container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    width: 100%;
     gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
     @media (max-width: $desktop-width) {
-      width: 100%;
-      max-width: 400px;
+      grid-template-columns: 1fr;
     }
   }
   &__item {
-    flex: 1 1 370px;
+    max-width: 370px;
     height: 48px;
     outline: none;
     @media (max-width: $desktop-width) {
       width: 100%;
+      max-width: none;
     }
   }
   &__button {
@@ -485,6 +479,13 @@ body {
     margin-top: 25px;
     @media (max-width: $desktop-width) {
       width: 100%;
+    }
+  }
+  &__input-range {
+    grid-column: 1 / 3;
+    max-width: 770px;
+    @media (max-width: $desktop-width) {
+      grid-column: 1;
     }
   }
 }
@@ -502,9 +503,12 @@ body {
     font-size: 18px;
     line-height: 22px;
     color: $dark-blue;
-    padding: 12px 10px;
+    padding: 12px 40px 12px 10px;
     text-align: left;
     position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     &::after {
       content: '';
       position: absolute;
@@ -550,6 +554,9 @@ body {
     line-height: 34px;
     color: $white;
     cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     &:hover {
       color: $light-blue;
     }
@@ -581,7 +588,6 @@ body {
 
 // Range
 .input-range {
-  flex: 1 1 770px;
   position: relative;
   font-size: 18px;
   line-height: 22px;
@@ -633,7 +639,6 @@ body {
     }
   }
   @media (max-width: $desktop-large-width) {
-    flex: 1 1 370px;
     font-size: 14px;
     line-height: 18px;
   }
@@ -699,6 +704,9 @@ body {
     display: flex;
     align-items: center;
     margin-right: 45px;
+    @media (max-width: $tablet-width) {
+      margin-right: 10px;
+    }
   }
   &__item:last-child {
     margin-right: 0;
@@ -709,6 +717,9 @@ body {
     margin-right: 15px;
     background-position: center;
     background-repeat: no-repeat;
+    @media (max-width: $tablet-width) {
+      margin-right: 3px;
+    }
   }
   &_qiwiwallet &__icon {
     background-image: url(../images/qiwiwallet.svg);
@@ -722,14 +733,6 @@ body {
   &__name {
     margin: 0;
   }
-  @media (max-width: $tablet-width) {
-    &__item {
-      margin-right: 10px;
-    }
-    &__icon {
-      margin-right: 3px;
-    }
-  }
 }
 .contacts {
   display: flex;
@@ -739,6 +742,9 @@ body {
   list-style: none;
   &__item {
     margin-right: 45px;
+    @media (max-width: $tablet-width) {
+      margin-right: 10px;
+    }
   }
   &__item:last-child {
     margin-right: 0;
@@ -761,20 +767,18 @@ body {
   &_email &__icon {
     margin-right: 11px;
     background-image: url(../images/email.svg);
+    @media (max-width: $tablet-width) {
+      margin-right: 3px;
+    }
   }
   &_vk &__icon {
     margin-right: 11px;
     background-image: url(../images/vk.svg);
-  }
-  @media (max-width: $tablet-width) {
-    &__item {
-      margin-right: 10px;
-    }
-    &_email &__icon {
-      margin-right: 3px;
-    }
-    &_vk &__icon {
+    @media (max-width: $tablet-width) {
       margin-right: 3px;
     }
   }
+}
+.copyright {
+  text-align: center;
 }

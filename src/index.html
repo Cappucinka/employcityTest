@@ -100,7 +100,7 @@
             <div class="form__container">
               <div class="form__item select js-select" tabindex="1">
                 <input
-                  class="select__input"
+                  class="select__input js-select-input"
                   type="hidden"
                   name="type-system"
                   value=""
@@ -113,7 +113,8 @@
                     Sed ut perspiciatis
                   </li>
                   <li class="select__item js-select-option" data-value="2">
-                    Nemo enim ipsam
+                    Nemo enim ipsam Nemo enim ipsam Nemo enim ipsam Nemo enim
+                    ipsam
                   </li>
                   <li class="select__item js-select-option" data-value="3">
                     Et harum quidemm
@@ -138,23 +139,23 @@
                 placeholder="Ваше имя"
                 name="name"
               />
-              <div class="form__item input-range">
+              <div
+                class="form__item form__input-range input-range js-input-range"
+              >
                 <p class="input-range__text">
                   Sed ut perspiciatis, unde omnis iste natus
                 </p>
                 <div
-                  class="input-range__value"
+                  class="input-range__value js-input-range-value"
                   min="0"
                   max="100"
-                  id="js-input-range-value"
                 >
                   75%
                 </div>
                 <input
-                  class="input-range__line"
+                  class="input-range__line js-input-range-line"
                   type="range"
                   name="percent"
-                  id="js-input-range"
                   value="75"
                 />
               </div>

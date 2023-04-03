@@ -11,11 +11,15 @@ mobileMenuIcon.addEventListener('click', () => {
 });
 
 // Range
-const range = document.querySelector('#js-input-range');
-const rangeValue = document.querySelector('#js-input-range-value');
+const ranges = document.querySelectorAll('.js-input-range-line');
 
-range.addEventListener('input', (event) => {
-  rangeValue.innerHTML = event.target.value + '%';
+ranges.forEach((range) => {
+  range.addEventListener('input', (event) => {
+    const rangeValue = event.target
+      .closest('.js-input-range')
+      .querySelector('.js-input-range-value');
+    rangeValue.innerHTML = event.target.value + '%';
+  });
 });
 
 // Select
@@ -31,10 +35,12 @@ select.forEach((select) => {
   });
 });
 options.forEach((option) => {
-  option.addEventListener('click', (e) => {
-    const select = e.target.closest('.js-select');
+  option.addEventListener('click', (event) => {
+    const select = event.target.closest('.js-select');
+    const value = event.target.innerText;
     select.classList.remove('select_opened');
-    select.querySelector('.js-select-button').innerHTML = e.target.textContent;
+    select.querySelector('.js-select-button').innerHTML = value;
+    select.querySelector('.js-select-input').value = value;
     select.blur();
   });
 });
